@@ -69,7 +69,7 @@ page = driver.page_source
 soup = BeautifulSoup(page, 'lxml')
 
 
-# In[10]:
+# In[22]:
 
 
 all_names = []
@@ -81,7 +81,7 @@ all_reviews = []
 
 all_comments = soup.findAll("div", class_='a-section celwidget')
 
-for page in range(10):
+for page in range(4042):
     next_page = driver.find_element_by_xpath('//*[@id="cm_cr-pagination_bar"]/ul/li[2]/a')
     
     for one in all_comments:
@@ -106,7 +106,7 @@ for page in range(10):
 #       print(all_reviews)
 
 
-# In[11]:
+# In[23]:
 
 
 total_review = {'Names : ':all_names, 'Stars : ': all_stars, 'Date : ':all_dates, 
@@ -115,10 +115,10 @@ total_review = pd.DataFrame(total_review)
 total_review
 
 
-# In[12]:
+# In[24]:
 
 
-total_review.to_csv("Amazon_review_collect", index=False)
+total_review.to_csv("Amazon_review_collect.csv", index=False)
 
 print(os.getcwd())
 print(os.listdir(os.getcwd()))
